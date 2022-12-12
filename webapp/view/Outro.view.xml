@@ -1,0 +1,38 @@
+<mvc:View
+	controllerName="flush.game.controller.Outro"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:game="flush.game.controls">
+	<Page
+		id="page"
+		enableScrolling="false"
+		title="{i18n>outroTitle}"
+		showNavButton="true"
+		navButtonPress=".onBack">
+		<headerContent>
+			<ObjectNumber number="Total: {appView>/score}" class="sapUiSmallMarginEnd"/>
+		</headerContent>
+		<content>
+			<Image src="{
+					path: 'view>/outro',
+					formatter: '.formatter.pictureUrl'
+				}"
+				width="{= ${device>/system/desktop} ? 'inherit' : '100%'}"
+				height="{= ${device>/system/desktop} ? '720px' : 'inherit'}"/>
+			<core:Fragment id="arcadeBoard" fragmentName="flush.game.view.ArcadeBoard" type="XML"/>
+		</content>
+		<dependents>
+			<game:MessageToastStory id="outro">
+				<game:MessageToastDeluxe message="" duration="2000"/>
+				<game:MessageToastDeluxe message="Congratulations! You have defeated the evil Render Manager and rescued us, you are truly a brave robot" speaker="Scary" image="LilaDebatiert.png" duration="5000" position="center center"/>
+				<game:MessageToastDeluxe message="" image="effect_pow.png" duration="1" position="begin center"/>
+				<game:MessageToastDeluxe message="" image="effect_awesome.png" duration="1" position="center center"/>
+				<game:MessageToastDeluxe message="" image="effect_plop.png" duration="1" position="end center"/>
+				<game:MessageToastDeluxe message="Thanks for playing Flush!" duration="2000" position="center center"/>
+				<game:MessageToastDeluxe message="" image="flush_logo_xl.png" duration="5000" position="center center"/>
+			</game:MessageToastStory>
+		</dependents>
+	</Page>
+</mvc:View>
